@@ -9,7 +9,7 @@ export default class AnthropicProvider extends BaseProvider {
   getApiKeyLink = 'https://console.anthropic.com/settings/keys';
 
   config = {
-    apiTokenKey: 'ANTHROPIC_API_KEY',
+    apiTokenKey: 'OPIC_API_KEYANTHR',
   };
 
   staticModels: ModelInfo[] = [
