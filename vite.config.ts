@@ -71,6 +71,18 @@ const getPackageJson = () => {
 const pkg = getPackageJson();
 const gitInfo = getGitInfo();
 
+/**
+ * Hosts that must be permitted when Vite performs host-checking
+ *  - localhost           → local dev
+ *  - speed-sites-bolt-diy.onrender.com → Render deployment
+ *  - speedsites.com      → production domain / CNAME
+ */
+const allowedHosts = [
+  'localhost',
+  'speed-sites-bolt-diy.onrender.com',
+  'speedsites.com',
+];
+
 export default defineConfig((config) => {
   return {
     define: {
@@ -93,6 +105,17 @@ export default defineConfig((config) => {
     },
     build: {
       target: 'esnext',
+    },
+
+    /**
+     * Allow inbound requests from Render & production hostnames.
+     * Vite blocks unknown Origin/Host headers unless explicitly whitelisted.
+     */
+    server: {
+      allowedHosts,
+    },
+    preview: {
+      allowedHosts,
     },
     plugins: [
       nodePolyfills({
