@@ -77,11 +77,7 @@ const gitInfo = getGitInfo();
  *  - speed-sites-bolt-diy.onrender.com → Render deployment
  *  - speedsites.com      → production domain / CNAME
  */
-const allowedHosts = [
-  'localhost',
-  'speed-sites-bolt-diy.onrender.com',
-  'speedsites.com',
-];
+const allowedHosts = ['localhost', 'speed-sites-bolt-diy.onrender.com', 'speedsites.com'];
 
 export default defineConfig((config) => {
   return {
