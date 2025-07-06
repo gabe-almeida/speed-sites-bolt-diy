@@ -64,6 +64,9 @@ ENV WRANGLER_SEND_METRICS=false \
 RUN mkdir -p /root/.config/.wrangler && \
     echo '{"enabled":false}' > /root/.config/.wrangler/metrics.json
 
+# Debug: List files to verify build artifacts are present
+RUN ls -la /app && ls -la /app/build && ls -la /app/build/server
+
 # Start the application
 CMD ["npm", "run", "start:prod"]
 
