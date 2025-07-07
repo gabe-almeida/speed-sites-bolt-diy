@@ -5,7 +5,7 @@ WORKDIR /app
 
 # Install dependencies
 COPY package.json pnpm-lock.yaml ./
-RUN npm install -g pnpm && pnpm install
+RUN npm install -g pnpm && pnpm install && pnpm add express @remix-run/express
 
 # Copy source code
 COPY . .
@@ -68,5 +68,5 @@ RUN mkdir -p /root/.config/.wrangler && \
 RUN ls -la /app && ls -la /app/build && ls -la /app/build/server
 
 # Start the application
-CMD ["npm", "run", "start:prod"]
+CMD ["node", "server.js"]
 
